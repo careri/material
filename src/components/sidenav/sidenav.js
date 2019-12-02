@@ -432,7 +432,10 @@ function SidenavDirective($mdMedia, $mdUtil, $mdConstant, $mdTheming, $mdInterac
 
         // Apply the new position styles to the sidenav and backdrop.
         element.css(positionStyle);
-        backdrop.css(positionStyle);
+
+        if (backdrop) {
+          backdrop.css(positionStyle);
+        }
       }
 
       // When the sidenav is closing and we have previous defined container styles,
@@ -443,9 +446,11 @@ function SidenavDirective($mdMedia, $mdUtil, $mdConstant, $mdTheming, $mdInterac
           drawerEl.style.bottom = previousContainerStyles.bottom;
           drawerEl.style.height = previousContainerStyles.height;
 
-          backdrop[0].style.top = null;
-          backdrop[0].style.bottom = null;
-          backdrop[0].style.height = null;
+          if (backdrop) {
+            backdrop[0].style.top = null;
+            backdrop[0].style.bottom = null;
+            backdrop[0].style.height = null;
+          }
 
           previousContainerStyles = null;
         };
